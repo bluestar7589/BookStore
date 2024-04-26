@@ -18,6 +18,10 @@ main {
 
 footer {
     width: 100%;
+    background: linear-gradient(45deg, yellow 30%, purple 70%, blue 100%);
+    color: red;
+    
+
 }
 body {
     display: flex;

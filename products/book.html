@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../styles/main.css" rel="stylesheet" />
+        <script defer src="../js/main.js"></script>
+
+        <title>Book List</title>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Book Store</a>
+                    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button> -->
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="book.html">Book Form</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="container mt-5">
+                <h1>Create Book</h1>
+                <form>
+                    <div class="mb-3">
+                        <label for="isbn" class="form-label">ISBN 13 number</label>
+                        <input type="text" class="form-control" id="isbn" placeholder="Enter ISBN 13 number">
+                        <span class="error_msg"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" placeholder="Enter book title">
+                        <span class="error_msg"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="price" placeholder="Enter book price">
+                        <span class="error_msg"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="releaseDate" class="form-label">Release Date</label>
+                        <input type="date" class="form-control" id="releaseDate">
+                        <span class="error_msg"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </main>
+
+        <footer>
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                &copy; 2024 Book Store:
+                <a class="text-dark" href="https://bluestar7589.github.io/BookStore/">BookStore.com</a><br>
+                Nguyen, Thien - Spring 2024 - CPW 204 Advance JavaScript
+            </div>
+        </footer>
+
+        <!-- Optional JavaScript; choose one of the two! -->
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
