@@ -39,19 +39,6 @@ class Book {
 
 }
 
-//Book object test code
-let mybook = new Book();
-mybook.isbn = "123456";
-mybook.title = "TypeScript Programming";
-mybook.price = 100;
-mybook.releaseDate = new Date("2024-04-26");
-console.log(`The book's ISBN is ${mybook.isbn}`);
-console.log(`The book's title is ${mybook.title}`);
-console.log(`The book's price is ${mybook.price}`);
-console.log(`The book's release date is ${mybook.releaseDate}`);
-
-console.log(mybook);
-
 window.onload = function() {
     // setup the button click event for add book form
     let addBookBtn = document.getElementById("btnSubmit") as HTMLButtonElement;
@@ -70,12 +57,11 @@ function processBook():void {
         let txtPrice = document.querySelector("#price") as HTMLInputElement;
         let txtReleaseDate = document.querySelector("#releaseDate") as HTMLInputElement;
     if(isValidAllData(txtIsbn,txtTitle,txtPrice,txtReleaseDate)){
-        let userbook = getBook();    
-        // if(userbook != null) {
-        //     addBook(userbook);
-        // }
-        // display the added book information on the web page
-        showAddedBookInfo(userbook);
+        let userBook = getBook();    
+        if(userBook != null) {
+            //display the added book information on the web page
+            addBook(userBook);
+        }
     }
 }
 
@@ -109,6 +95,7 @@ function getBook():Book {
     let txtReleaseDate = document.querySelector("#releaseDate") as HTMLInputElement;
     
     if(isValidAllData(txtIsbn, txtTitle, txtPrice, txtReleaseDate)){
+        // create a populate Book object
         let newBook = new Book();
         newBook.isbn = txtIsbn.value;
         newBook.title = txtTitle.value;
@@ -116,6 +103,8 @@ function getBook():Book {
         newBook.releaseDate = new Date(txtReleaseDate.value);
         return newBook;
     }
+
+    return null; // when if any data is invalid on the currently form
     
 }
 
@@ -186,8 +175,12 @@ function isValidDate(date: Date): boolean {
  * This function will add the book to the book list.
  * @param b The book to be added to the book list.
  */
-function addBook(b:Book):void{
-    throw new Error("Function not implemented.");
+function addBook(newBook:Book):void{
+    // display the added book information on the web page
+    var displayDiv = document.getElementById("displayDiv");
+    var infoParagraph = document.createElement("p");
+    infoParagraph.textContent = `ISBN: ${newBook.isbn}, Title: ${newBook.title}, Price: ${newBook.price}, Release Date: ${newBook.releaseDate}`;
+    displayDiv.appendChild(infoParagraph);
 }
 
 /**

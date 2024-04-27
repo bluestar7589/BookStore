@@ -1,15 +1,5 @@
 class Book {
 }
-let mybook = new Book();
-mybook.isbn = "123456";
-mybook.title = "TypeScript Programming";
-mybook.price = 100;
-mybook.releaseDate = new Date("2024-04-26");
-console.log(`The book's ISBN is ${mybook.isbn}`);
-console.log(`The book's title is ${mybook.title}`);
-console.log(`The book's price is ${mybook.price}`);
-console.log(`The book's release date is ${mybook.releaseDate}`);
-console.log(mybook);
 window.onload = function () {
     let addBookBtn = document.getElementById("btnSubmit");
     addBookBtn.onclick = processBook;
@@ -21,8 +11,10 @@ function processBook() {
     let txtPrice = document.querySelector("#price");
     let txtReleaseDate = document.querySelector("#releaseDate");
     if (isValidAllData(txtIsbn, txtTitle, txtPrice, txtReleaseDate)) {
-        let userbook = getBook();
-        showAddedBookInfo(userbook);
+        let userBook = getBook();
+        if (userBook != null) {
+            addBook(userBook);
+        }
     }
 }
 function showAddedBookInfo(newBook) {
@@ -44,6 +36,7 @@ function getBook() {
         newBook.releaseDate = new Date(txtReleaseDate.value);
         return newBook;
     }
+    return null;
 }
 function isValidAllData(isbnElement, titleElement, priceElement, releaseDateElement) {
     let isValidData = true;
@@ -80,8 +73,11 @@ function isValidIsbn(isbn) {
 function isValidDate(date) {
     return date instanceof Date && !isNaN(date.getTime());
 }
-function addBook(b) {
-    throw new Error("Function not implemented.");
+function addBook(newBook) {
+    var displayDiv = document.getElementById("displayDiv");
+    var infoParagraph = document.createElement("p");
+    infoParagraph.textContent = `ISBN: ${newBook.isbn}, Title: ${newBook.title}, Price: ${newBook.price}, Release Date: ${newBook.releaseDate}`;
+    displayDiv.appendChild(infoParagraph);
 }
 function clearAllErrors() {
     let allErrorSpans = document.querySelectorAll("main div form span");
