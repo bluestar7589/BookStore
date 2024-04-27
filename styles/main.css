@@ -28,3 +28,7 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.error_msg {
+    color: red;
+}

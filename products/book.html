@@ -44,26 +44,30 @@
                 <form>
                     <div class="mb-3">
                         <label for="isbn" class="form-label">ISBN 13 number</label>
-                        <input type="text" class="form-control" id="isbn" placeholder="Enter ISBN 13 number">
-                        <span class="error_msg"></span>
+                        <input type="text" class="form-control" id="isbn" placeholder="Enter ISBN 13 number" maxlength="13">
+                        <span class="error_msg">*</span>
                     </div>
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
                         <input type="text" class="form-control" id="title" placeholder="Enter book title">
-                        <span class="error_msg"></span>
+                        <span class="error_msg">*</span>
                     </div>
                     <div class="mb-3">
                         <label for="price" class="form-label">Price</label>
                         <input type="number" class="form-control" id="price" placeholder="Enter book price">
-                        <span class="error_msg"></span>
+                        <span class="error_msg">*</span>
                     </div>
                     <div class="mb-3">
                         <label for="releaseDate" class="form-label">Release Date</label>
                         <input type="date" class="form-control" id="releaseDate">
-                        <span class="error_msg"></span>
+                        <span class="error_msg">*</span>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-primary" id="btnSubmit">Submit</button>
                 </form>
+            </div>
+            <div id="displayDiv">
+
+
             </div>
         </main>
 
