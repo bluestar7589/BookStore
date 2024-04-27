@@ -17,12 +17,6 @@ function processBook() {
         }
     }
 }
-function showAddedBookInfo(newBook) {
-    var displayDiv = document.getElementById("displayDiv");
-    var infoParagraph = document.createElement("p");
-    infoParagraph.textContent = `ISBN: ${newBook.isbn}, Title: ${newBook.title}, Price: ${newBook.price}, Release Date: ${newBook.releaseDate}`;
-    displayDiv.appendChild(infoParagraph);
-}
 function getBook() {
     let txtIsbn = document.querySelector("#isbn");
     let txtTitle = document.querySelector("#title");
@@ -33,7 +27,7 @@ function getBook() {
         newBook.isbn = txtIsbn.value;
         newBook.title = txtTitle.value;
         newBook.price = parseFloat(txtPrice.value);
-        newBook.releaseDate = new Date(txtReleaseDate.value);
+        newBook.releaseDate = adjustDate(new Date(txtReleaseDate.value));
         return newBook;
     }
     return null;
@@ -58,7 +52,7 @@ function isValidAllData(isbnElement, titleElement, priceElement, releaseDateElem
         priceError.textContent = "Price is required and must be a positive number.";
         isValidData = false;
     }
-    let releaseDate = new Date(releaseDateElement.value);
+    let releaseDate = adjustDate(new Date(releaseDateElement.value));
     if (!isValidDate(releaseDate)) {
         let releaseDateError = releaseDateElement.nextElementSibling;
         releaseDateError.textContent = "Release Date is required and must be a valid date.";
@@ -96,4 +90,9 @@ function resetForm() {
     document.getElementById("title").value = "";
     document.getElementById("price").value = "";
     document.getElementById("releaseDate").value = "mm/dd/yyyy";
+}
+function adjustDate(date) {
+    let userTimezoneOffset = date.toISOString();
+    let parts = userTimezoneOffset.split("-");
+    return new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2].substring(0, 2)));
 }

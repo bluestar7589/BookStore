@@ -66,21 +66,6 @@ function processBook():void {
 }
 
 /**
- * To display the added book information on the web page.
- * @param newBook The new book to be added to the book list.
- */
-function showAddedBookInfo(newBook: Book) {
-    // display the added book information on the web page
-    var displayDiv = document.getElementById("displayDiv");
-    var infoParagraph = document.createElement("p");
-    infoParagraph.textContent = `ISBN: ${newBook.isbn}, Title: ${newBook.title}, Price: ${newBook.price}, Release Date: ${newBook.releaseDate}`;
-    displayDiv.appendChild(infoParagraph);
-}
-
-
-
-
-/**
  * This function will retrieve all the book data
  * from the HTML page. If all data is valid, it will
  * be return a book object. if any data is invalid, it will return null and 
@@ -100,7 +85,7 @@ function getBook():Book {
         newBook.isbn = txtIsbn.value;
         newBook.title = txtTitle.value;
         newBook.price = parseFloat(txtPrice.value);
-        newBook.releaseDate = new Date(txtReleaseDate.value);
+        newBook.releaseDate = adjustDate(new Date(txtReleaseDate.value));
         return newBook;
     }
 
@@ -141,7 +126,7 @@ function isValidAllData(isbnElement:HTMLInputElement, titleElement:HTMLInputElem
     }
 
     // validate release date
-    let releaseDate = new Date(releaseDateElement.value);
+    let releaseDate = adjustDate(new Date(releaseDateElement.value));
     if (!isValidDate(releaseDate)){
         let releaseDateError = releaseDateElement.nextElementSibling as HTMLElement;
         releaseDateError.textContent = "Release Date is required and must be a valid date.";
@@ -207,5 +192,18 @@ function resetForm():void {
     (<HTMLInputElement>document.getElementById("title")).value = "";
     (<HTMLInputElement>document.getElementById("price")).value = "";
     (<HTMLInputElement>document.getElementById("releaseDate")).value = "mm/dd/yyyy"
+}
+
+/**
+ * This function will adjust the date to the user's timezone.
+ * @param date 
+ * @returns the adjusted date by currently time zone
+ */
+function adjustDate(date: Date): Date {
+    let userTimezoneOffset = date.toISOString();
+    let parts = userTimezoneOffset.split("-");
+    // Please note: JavaScript counts months from 0:
+    // January is 0, February is 1, etc.
+    return new Date(Number(parts[0]),  Number(parts[1]) - 1, Number(parts[2].substring(0,2)));
 }
 
