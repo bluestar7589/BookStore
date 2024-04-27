@@ -22,17 +22,14 @@ function processBook() {
     let txtReleaseDate = document.querySelector("#releaseDate");
     if (isValidAllData(txtIsbn, txtTitle, txtPrice, txtReleaseDate)) {
         let userbook = getBook();
-        if (userbook != null) {
-            addBook(userbook);
-        }
         showAddedBookInfo(userbook);
     }
 }
 function showAddedBookInfo(newBook) {
     var displayDiv = document.getElementById("displayDiv");
     var infoParagraph = document.createElement("p");
-    infoParagraph.innerHTML = `ISBN: ${newBook.isbn}, Title: ${newBook.title}, Price: ${newBook.price}, Release Date: ${newBook.releaseDate}`;
-    throw new Error("Function not implemented.");
+    infoParagraph.textContent = `ISBN: ${newBook.isbn}, Title: ${newBook.title}, Price: ${newBook.price}, Release Date: ${newBook.releaseDate}`;
+    displayDiv.appendChild(infoParagraph);
 }
 function getBook() {
     let txtIsbn = document.querySelector("#isbn");
@@ -87,9 +84,20 @@ function addBook(b) {
     throw new Error("Function not implemented.");
 }
 function clearAllErrors() {
-    let allErrorSpans = document.querySelectorAll("span");
+    let allErrorSpans = document.querySelectorAll("main div form span");
     for (let i = 0; i < allErrorSpans.length; i++) {
         let currentSpan = allErrorSpans[i];
         currentSpan.textContent = "";
     }
+}
+function resetForm() {
+    let allErrorSpans = document.querySelectorAll("main div form span");
+    for (let i = 0; i < allErrorSpans.length; i++) {
+        let currentSpan = allErrorSpans[i];
+        currentSpan.textContent = "*";
+    }
+    document.getElementById("isbn").value = "";
+    document.getElementById("title").value = "";
+    document.getElementById("price").value = "";
+    document.getElementById("releaseDate").value = "mm/dd/yyyy";
 }

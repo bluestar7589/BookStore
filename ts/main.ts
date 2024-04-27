@@ -71,9 +71,9 @@ function processBook():void {
         let txtReleaseDate = document.querySelector("#releaseDate") as HTMLInputElement;
     if(isValidAllData(txtIsbn,txtTitle,txtPrice,txtReleaseDate)){
         let userbook = getBook();    
-        if(userbook != null) {
-            addBook(userbook);
-        }
+        // if(userbook != null) {
+        //     addBook(userbook);
+        // }
         // display the added book information on the web page
         showAddedBookInfo(userbook);
     }
@@ -87,8 +87,8 @@ function showAddedBookInfo(newBook: Book) {
     // display the added book information on the web page
     var displayDiv = document.getElementById("displayDiv");
     var infoParagraph = document.createElement("p");
-    infoParagraph.innerHTML = `ISBN: ${newBook.isbn}, Title: ${newBook.title}, Price: ${newBook.price}, Release Date: ${newBook.releaseDate}`;
-    throw new Error("Function not implemented.");
+    infoParagraph.textContent = `ISBN: ${newBook.isbn}, Title: ${newBook.title}, Price: ${newBook.price}, Release Date: ${newBook.releaseDate}`;
+    displayDiv.appendChild(infoParagraph);
 }
 
 
@@ -194,10 +194,25 @@ function addBook(b:Book):void{
  * Clear all error messages from span elements
  */
 function clearAllErrors():void {
-    let allErrorSpans = document.querySelectorAll("span");
+    let allErrorSpans = document.querySelectorAll("main div form span");
     for(let i = 0; i < allErrorSpans.length; i++){
         let currentSpan = allErrorSpans[i];
         currentSpan.textContent = "";
     }
+}
+
+/**
+ * To reset the form after the user click the submit button.
+ */
+function resetForm():void {
+    let allErrorSpans = document.querySelectorAll("main div form span") as NodeListOf<HTMLElement>;
+    for(let i = 0; i < allErrorSpans.length; i++){
+        let currentSpan:HTMLElement = allErrorSpans[i];
+        currentSpan.textContent = "*";
+    }
+    (<HTMLInputElement>document.getElementById("isbn")).value = "";
+    (<HTMLInputElement>document.getElementById("title")).value = "";
+    (<HTMLInputElement>document.getElementById("price")).value = "";
+    (<HTMLInputElement>document.getElementById("releaseDate")).value = "mm/dd/yyyy"
 }
 
