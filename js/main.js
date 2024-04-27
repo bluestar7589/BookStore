@@ -10,3 +10,28 @@ console.log(`The book's title is ${mybook.title}`);
 console.log(`The book's price is ${mybook.price}`);
 console.log(`The book's release date is ${mybook.releaseDate}`);
 console.log(mybook);
+window.onload = function () {
+    let addBookBtn = document.getElementById("btnSubmit");
+    addBookBtn.onclick = processBook;
+};
+function processBook() {
+    if (isValidAllData()) {
+        let userbook = getBook();
+        if (userbook != null) {
+            addBook(userbook);
+        }
+        showAddedBookInfo(userbook);
+    }
+}
+function showAddedBookInfo(newBook) {
+}
+function isValidAllData() {
+    throw new Error("Function not implemented.");
+}
+function getBook() {
+    var newBook = getBook();
+    return newBook;
+}
+function addBook(b) {
+    throw new Error("Function not implemented.");
+}

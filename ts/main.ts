@@ -51,3 +51,62 @@ console.log(`The book's price is ${mybook.price}`);
 console.log(`The book's release date is ${mybook.releaseDate}`);
 
 console.log(mybook);
+
+window.onload = function() {
+    // setup the button click event for add book form
+    let addBookBtn = document.getElementById("btnSubmit") as HTMLButtonElement;
+    addBookBtn.onclick = processBook;
+    }
+
+    /**
+     * To process the book information from the form and add it to the book list.
+     */
+function processBook():void {
+    if(isValidAllData()){
+        let userbook = getBook();    
+        if(userbook != null) {
+            addBook(userbook);
+        }
+        // display the added book information on the web page
+        showAddedBookInfo(userbook);
+    }
+}
+
+/**
+ * To display the added book information on the web page.
+ * @param newBook The new book to be added to the book list.
+ */
+function showAddedBookInfo(newBook: Book) {
+
+}
+
+/**
+ * To check if all the data in the form is valid.
+ */
+function isValidAllData():boolean {
+
+    throw new Error("Function not implemented.");
+}
+
+
+/**
+ * This function will retrieve all the book data
+ * from the HTML page. If all data is valid, it will
+ * be return a book object. if any data is invalid, it will return null
+ * @returns
+ */
+function getBook():Book {
+    // get all the field from the form and create a new book instance
+    var newBook = getBook();
+
+    return newBook;
+}
+
+/**
+ * This function will add the book to the book list.
+ * @param b The book to be added to the book list.
+ */
+function addBook(b:Book):void{
+    throw new Error("Function not implemented.");
+}
+
