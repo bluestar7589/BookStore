@@ -10,18 +10,18 @@ body {
 
 header {
     width: 20%;
+    margin-right: 5px;
 }
 
 main {
-    width: 80%;
+    width: 78%;
+    margin-left: 5px;
 }
 
 footer {
     width: 100%;
     background: linear-gradient(45deg, yellow 30%, purple 70%, blue 100%);
-    color: red;
-    
-
+    color: red;    
 }
 body {
     display: flex;
@@ -31,4 +31,10 @@ body {
 
 .error_msg {
     color: red;
+}
+.banner {
+    height: 70px;
+    width: 100%;
+    background: linear-gradient(45deg, green 30%, red 70%, orange 100%);  
+    font-size: 4em;
 }
