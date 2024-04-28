@@ -92,7 +92,10 @@ function resetForm() {
     document.getElementById("releaseDate").value = "mm/dd/yyyy";
 }
 function adjustDate(date) {
-    let userTimezoneOffset = date.toISOString();
-    let parts = userTimezoneOffset.split("-");
-    return new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2].substring(0, 2)));
+    if (date.toString() != 'Invalid Date') {
+        let userTimezoneOffset = date.toISOString();
+        let parts = userTimezoneOffset.split("-");
+        return new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2].substring(0, 2)));
+    }
+    return null;
 }

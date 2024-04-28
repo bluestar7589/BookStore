@@ -200,10 +200,13 @@ function resetForm():void {
  * @returns the adjusted date by currently time zone
  */
 function adjustDate(date: Date): Date {
-    let userTimezoneOffset = date.toISOString();
-    let parts = userTimezoneOffset.split("-");
-    // Please note: JavaScript counts months from 0:
-    // January is 0, February is 1, etc.
-    return new Date(Number(parts[0]),  Number(parts[1]) - 1, Number(parts[2].substring(0,2)));
+    if(date.toString() != 'Invalid Date') {
+        let userTimezoneOffset = date.toISOString();
+        let parts = userTimezoneOffset.split("-");
+        // Please note: JavaScript counts months from 0:
+        // January is 0, February is 1, etc.
+        return new Date(Number(parts[0]),  Number(parts[1]) - 1, Number(parts[2].substring(0,2)));
+    }
+    return null;
 }
 
